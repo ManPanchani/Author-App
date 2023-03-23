@@ -1,16 +1,4 @@
 # author_app
 
-A new Flutter project.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="https://user-images.githubusercontent.com/118456066/227211764-936ab085-9bb5-4fa0-a3ae-6fc6791affdc.jpg" width="200px">          <img src="https://user-images.githubusercontent.com/118456066/227211837-ad87caa8-4201-4fad-b3f0-afdaa381b580.jpg" width="200px">          <img src="https://user-images.githubusercontent.com/118456066/227211786-7ec34076-3b5d-423e-95ee-c21db8adb52a.jpg" width="200px">          <img src="https://user-images.githubusercontent.com/118456066/227211959-4502b3ae-d3aa-46e0-bdca-197e09f54ac0.jpg" width="200px">          <img src="https://user-images.githubusercontent.com/118456066/227212020-a03f239c-b15f-4f4f-acb5-86a143371f23.jpg" width="200px">          <img src="https://user-images.githubusercontent.com/118456066/227212062-847c7a62-c31b-4b5c-843c-49dd62dcc516.jpg" width="200px">          <img src="https://user-images.githubusercontent.com/118456066/227212744-ca54a314-fb38-4e2f-a261-1f2bd8b0d3f8.jpg" width="200px">
