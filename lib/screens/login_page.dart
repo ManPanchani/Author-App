@@ -52,32 +52,32 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(
               height: 15,
             ),
-            ElevatedButton(
-              onPressed: () async {
-                User? user = await FirebaseAuthHelper.firebaseAuthHelper
-                    .logInWithAnonymously();
-
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text("Login Successful..."),
-                    backgroundColor: Colors.green,
-                    behavior: SnackBarBehavior.floating,
-                  ),
-                );
-                if (user != null) {
-                  Navigator.of(context).pushReplacementNamed("HomePage");
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text("Login Failed..."),
-                      backgroundColor: Colors.red,
-                      behavior: SnackBarBehavior.floating,
-                    ),
-                  );
-                }
-              },
-              child: const Text("Anonymous Login"),
-            ),
+            // ElevatedButton(
+            //   onPressed: () async {
+            //     User? user = await FirebaseAuthHelper.firebaseAuthHelper
+            //         .logInWithAnonymously();
+            //
+            //     ScaffoldMessenger.of(context).showSnackBar(
+            //       const SnackBar(
+            //         content: Text("Login Successful..."),
+            //         backgroundColor: Colors.green,
+            //         behavior: SnackBarBehavior.floating,
+            //       ),
+            //     );
+            //     if (user != null) {
+            //       Navigator.of(context).pushReplacementNamed("HomePage");
+            //     } else {
+            //       ScaffoldMessenger.of(context).showSnackBar(
+            //         const SnackBar(
+            //           content: Text("Login Failed..."),
+            //           backgroundColor: Colors.red,
+            //           behavior: SnackBarBehavior.floating,
+            //         ),
+            //       );
+            //     }
+            //   },
+            //   child: const Text("Anonymous Login"),
+            // ),
           ],
         ),
       ),

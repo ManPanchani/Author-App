@@ -104,18 +104,23 @@ class _HomePageState extends State<HomePage> {
                               padding: const EdgeInsets.all(10),
                               child: Image(
                                 image: MemoryImage(base64Decode(
-                                        allDocs[i].data()['image'] as String)
-                                    as Uint8List),
+                                    allDocs[i].data()['image'] as String)),
+                                width: w * 0.33,
                               ),
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Text(
-                                  "${allDocs[i].data()['title']}",
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.bold,
+                                Container(
+                                  alignment: Alignment.center,
+                                  height: 100,
+                                  width: 200,
+                                  child: Text(
+                                    "${allDocs[i].data()['title']}",
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 28,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                                 Text(
@@ -147,6 +152,52 @@ class _HomePageState extends State<HomePage> {
                                                   mainAxisSize:
                                                       MainAxisSize.min,
                                                   children: [
+                                                    InkWell(
+                                                      onTap: () async {
+                                                        XFile? xFile =
+                                                            await imagePicker.pickImage(
+                                                                source:
+                                                                    ImageSource
+                                                                        .gallery,
+                                                                imageQuality:
+                                                                    20);
+
+                                                        Uint8List bytes =
+                                                            await xFile!
+                                                                .readAsBytes();
+
+                                                        img =
+                                                            base64Encode(bytes);
+
+                                                        print(
+                                                            "=========================");
+                                                        print(img);
+                                                        print(
+                                                            "=========================");
+                                                      },
+                                                      child: CircleAvatar(
+                                                        backgroundImage: (img !=
+                                                                null)
+                                                            ? MemoryImage(img
+                                                                as Uint8List)
+                                                            : null,
+                                                        radius: 50,
+                                                        child: Text(
+                                                          (img != null)
+                                                              ? ""
+                                                              : "ADD",
+                                                          style:
+                                                              const TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 25,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 20,
+                                                    ),
                                                     TextFormField(
                                                       validator: (val) => (val!
                                                               .isEmpty)
@@ -249,8 +300,35 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     IconButton(
                                       onPressed: () {
-                                        FirebaseDBHelpers.firebaseDBHelpers
-                                            .deleteBook(id: allDocs[i].id);
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              title: const Text('Not in stock'),
+                                              content: const Text(
+                                                  'This item is no longer available'),
+                                              actions: [
+                                                ElevatedButton(
+                                                  onPressed: () {
+                                                    FirebaseDBHelpers
+                                                        .firebaseDBHelpers
+                                                        .deleteBook(
+                                                            id: allDocs[i].id);
+
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                  child: const Text("YES"),
+                                                ),
+                                                ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                  child: const Text("NO"),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
                                       },
                                       icon: const Icon(
                                         Icons.delete,
@@ -296,10 +374,10 @@ class _HomePageState extends State<HomePage> {
                 key: formKey,
                 child: Column(
                   children: [
-                    OutlinedButton(
-                      onPressed: () async {
+                    InkWell(
+                      onTap: () async {
                         XFile? xFile = await imagePicker.pickImage(
-                            source: ImageSource.camera, imageQuality: 20);
+                            source: ImageSource.gallery, imageQuality: 20);
 
                         Uint8List bytes = await xFile!.readAsBytes();
 
@@ -309,7 +387,20 @@ class _HomePageState extends State<HomePage> {
                         print(img);
                         print("=========================");
                       },
-                      child: const Text("Pic Images"),
+                      child: CircleAvatar(
+                        backgroundImage: (img != null)
+                            ? MemoryImage(img as Uint8List)
+                            : null,
+                        backgroundColor: Colors.grey,
+                        radius: 50,
+                        child: Text(
+                          (img != null) ? "" : "ADD",
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                          ),
+                        ),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(10),

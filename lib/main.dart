@@ -18,9 +18,8 @@ void main() async {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        // '/': (context) => const SplashPage(),
-        'HomePage': (context) => const HomePage(),
         '/': (context) => const LoginPage(),
+        'HomePage': (context) => const HomePage(),
       },
     ),
   );
